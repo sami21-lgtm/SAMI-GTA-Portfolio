@@ -1,67 +1,103 @@
-// Live Continuous Clock Function (HH:MM:SS AM/PM)
+// Real-time Clock Function
 function updateClock() {
-  const clockElement = document.getElementById('clock');
-  if (!clockElement) return;
+  const clockEl = document.getElementById('clock');
+  if (!clockEl) return;
 
   const now = new Date();
   let hours = now.getHours();
   let minutes = now.getMinutes();
   let seconds = now.getSeconds();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-
-  hours = hours % 12;
-  hours = hours ? hours : 12; // convert 0 to 12
 
   hours = hours < 10 ? '0' + hours : hours;
   minutes = minutes < 10 ? '0' + minutes : minutes;
   seconds = seconds < 10 ? '0' + seconds : seconds;
 
-  clockElement.innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
+  clockEl.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
-// Tab Switcher
-function switchTab(tabId, element) {
-  document.querySelectorAll('.content-panel').forEach(panel => {
-    panel.classList.remove('active');
+// Tab Switching & Objective Text Sync
+function switchTab(tabId, btnElement, locationName) {
+  // Hide all contents
+  document.querySelectorAll('.tab-content').forEach(content => {
+    content.classList.remove('active');
   });
 
-  document.querySelectorAll('.menu-item').forEach(item => {
-    item.classList.remove('active');
+  // Remove active state from all buttons
+  document.querySelectorAll('.menu-btn').forEach(btn => {
+    btn.classList.remove('active');
   });
 
-  const targetPanel = document.getElementById(tabId);
-  if (targetPanel) {
-    targetPanel.classList.add('active');
+  // Show selected tab content
+  const targetContent = document.getElementById(tabId);
+  if (targetContent) {
+    targetContent.classList.add('active');
   }
 
-  if (element) {
-    element.classList.add('active');
+  // Activate button
+  if (btnElement) {
+    btnElement.classList.add('active');
+  }
+
+  // Update top HUD location tag
+  const locationTag = document.getElementById('location-tag');
+  if (locationTag && locationName) {
+    locationTag.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${locationName}`;
+  }
+
+  // Dynamic Objective Text
+  const objText = document.getElementById('objective-text');
+  if (objText) {
+    const objectives = {
+      'start': 'BUILD NEXT LEVEL DIGITAL EXPERIENCES',
+      'about': 'DISCOVER DEVELOPER BACKGROUND',
+      'skills': 'REVIEW UNLOCKED ABILITIES',
+      'projects': 'INSPECT THE COMPLETED BUILDS',
+      'experience': 'TRACE THE FULL CAREER PATH',
+      'achievements': 'COLLECT EVERY UNLOCKED TROPHY',
+      'academy': 'RECRUIT THE NEXT GENERATION',
+      'contact': 'OPEN A SECURED LINE OF CONTACT'
+    };
+    objText.innerText = objectives[tabId] || 'EXPLORE VICE CITY';
   }
 }
 
-// GitHub Username Sync
-const username = 'sami21-lgtm';
+// Exit Game Trigger (Mission Complete Overlay)
+function triggerExitGame() {
+  const exitModal = document.getElementById('exit-modal');
+  if (exitModal) {
+    exitModal.classList.add('active');
+  }
+}
 
-async function fetchGitHubData() {
+// Reset Back to Home
+function resetGame() {
+  const exitModal = document.getElementById('exit-modal');
+  if (exitModal) {
+    exitModal.classList.remove('active');
+  }
+  const startBtn = document.querySelector('.side-menu .menu-btn');
+  switchTab('start', startBtn, 'VICE BEACH');
+}
+
+// Dynamic GitHub Avatar Fetch
+async function loadGitHubAvatar() {
   try {
-    const userRes = await fetch(`https://api.github.com/users/${username}`);
-    if (userRes.ok) {
-      const userData = await userRes.json();
-
-      const avatarEl = document.getElementById('user-avatar');
-      const repoCountEl = document.getElementById('repo-count');
-
-      if (avatarEl && userData.avatar_url) avatarEl.src = userData.avatar_url;
-      if (repoCountEl && userData.public_repos !== undefined) repoCountEl.innerText = `${userData.public_repos} REPOS`;
+    const res = await fetch('https://api.github.com/users/sami21-lgtm');
+    if (res.ok) {
+      const data = await res.json();
+      const imgEl = document.getElementById('avatar-img');
+      if (imgEl && data.avatar_url) {
+        imgEl.src = data.avatar_url;
+      }
     }
-  } catch (error) {
-    console.error('Error fetching GitHub API:', error);
+  } catch (err) {
+    console.log('GitHub API Load Fallback:', err);
   }
 }
 
-// Initialize on DOM Ready
+// Initialize on Load
 document.addEventListener('DOMContentLoaded', () => {
   updateClock();
-  setInterval(updateClock, 1000); // Continuous live tick every second
-  fetchGitHubData();
+  setInterval(updateClock, 1000);
+  loadGitHubAvatar();
 });
