@@ -1,0 +1,442 @@
+:root {
+  --pink: #ff007f;
+  --neon-cyan: #00f3ff;
+  --gta-yellow: #f1c40f;
+  --gta-green: #2ecc71;
+  --dark-bg: #090812;
+  --card-bg: rgba(18, 15, 32, 0.88);
+  --border-glow: rgba(255, 0, 127, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background: #000 url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Dark Cyber Overlay */
+.overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(9, 8, 18, 0.5) 0%, rgba(5, 4, 10, 0.95) 100%);
+  z-index: 1;
+}
+
+/* === TOP HUD BAR === */
+.hud-top {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hud-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink);
+}
+
+.claude-tag {
+  background: var(--pink);
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 8px;
+  font-weight: bold;
+  border-radius: 3px;
+  text-transform: uppercase;
+  box-shadow: 0 0 8px var(--pink);
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.wanted-stars {
+  color: #555;
+  font-size: 18px;
+}
+
+.wanted-stars .active {
+  color: var(--gta-yellow);
+  text-shadow: 0 0 8px var(--gta-yellow);
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.money-counter {
+  color: var(--gta-green);
+  font-size: 22px;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
+}
+
+/* Live Continuous Clock */
+.live-clock {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  min-width: 130px;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100px;
+}
+
+.bar {
+  height: 6px;
+  border-radius: 2px;
+}
+
+.bar-health {
+  background: var(--gta-green);
+  width: 100%;
+  box-shadow: 0 0 6px var(--gta-green);
+}
+
+.bar-armor {
+  background: var(--neon-cyan);
+  width: 85%;
+  box-shadow: 0 0 6px var(--neon-cyan);
+}
+
+/* === MAIN GAME INTERFACE === */
+.game-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: calc(100vh - 160px);
+  padding: 0 40px;
+  gap: 30px;
+}
+
+/* Left Menu Navigation */
+.side-menu {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.menu-item {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 26px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-left: 4px solid transparent;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(5px);
+  text-decoration: none;
+}
+
+.menu-item:hover, .menu-item.active {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(255, 0, 127, 0.3) 0%, rgba(0,0,0,0.5) 100%);
+  border-left-color: var(--pink);
+  padding-left: 28px;
+  text-shadow: 0 0 8px var(--pink);
+}
+
+.menu-item .badge {
+  font-size: 11px;
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--neon-cyan);
+  color: #000;
+  padding: 2px 6px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+/* Main Content Display Area */
+.main-viewport {
+  flex: 1;
+  background: var(--card-bg);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 127, 0.1);
+  border-radius: 8px;
+  padding: 30px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 42px;
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 2px solid rgba(255, 0, 127, 0.2);
+  padding-bottom: 10px;
+  text-shadow: 0 0 12px var(--pink);
+}
+
+.section-title span {
+  font-size: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.1);
+  padding: 3px 10px;
+  border: 1px solid var(--neon-cyan);
+  border-radius: 3px;
+}
+
+.content-panel { display: none; }
+.content-panel.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Profile Header */
+.profile-card {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 25px;
+}
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid var(--pink);
+  box-shadow: 0 0 15px var(--pink);
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+.profile-info p {
+  color: #ccc;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.github-link-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: var(--pink);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--pink);
+  transition: 0.3s;
+}
+
+.github-link-btn:hover {
+  background: var(--neon-cyan);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.skill-card {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-left: 3px solid var(--neon-cyan);
+  border-radius: 4px;
+}
+
+.skill-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-progress {
+  height: 8px;
+  background: #222;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--neon-cyan));
+}
+
+/* Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 18px;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--pink);
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+.project-card h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
+  color: var(--neon-cyan);
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* === BOTTOM HUD & FOOTER === */
+.hud-bottom {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px 40px;
+}
+
+/* GTA Minimap Radar */
+.minimap-radar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  background: radial-gradient(circle, rgba(15, 30, 45, 0.9) 0%, rgba(5, 10, 20, 0.95) 100%);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-grid {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: linear-gradient(rgba(0, 243, 255, 0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 243, 255, 0.15) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+.radar-blip {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  background: var(--pink);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px var(--pink);
+}
+
+.minimap-location {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Mission Complete Toast Banner */
+.mission-toast {
+  background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.85) 80%, transparent 100%);
+  padding: 12px 40px;
+  text-align: center;
+  border-top: 2px solid var(--gta-yellow);
+  border-bottom: 2px solid var(--gta-yellow);
+}
+
+.mission-toast h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 32px;
+  color: var(--gta-yellow);
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px var(--gta-yellow);
+}
+
+.mission-toast p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 3px; }
