@@ -4,7 +4,8 @@
   --gta-yellow: #f1c40f;
   --gta-green: #2ecc71;
   --dark-bg: #090812;
-  --card-bg: rgba(18, 15, 32, 0.88);
+  --card-bg: rgba(18, 15, 32, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.15);
   --border-glow: rgba(255, 0, 127, 0.4);
 }
 
@@ -27,7 +28,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Dark Cyber Overlay */
+/* Dark Cyber Glass Overlay */
 .overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -43,7 +44,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 0, 127, 0.3);
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -65,8 +68,8 @@ body {
 .claude-tag {
   background: var(--pink);
   color: #fff;
-  font-size: 12px;
-  padding: 3px 8px;
+  font-size: 11px;
+  padding: 4px 8px;
   font-weight: bold;
   border-radius: 3px;
   text-transform: uppercase;
@@ -169,13 +172,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
+  border-radius: 4px;
   text-decoration: none;
 }
 
 .menu-item:hover, .menu-item.active {
   color: #fff;
-  background: linear-gradient(90deg, rgba(255, 0, 127, 0.3) 0%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(90deg, rgba(255, 0, 127, 0.35) 0%, rgba(0,0,0,0.6) 100%);
   border-left-color: var(--pink);
   padding-left: 28px;
   text-shadow: 0 0 8px var(--pink);
@@ -191,16 +195,16 @@ body {
   border-radius: 2px;
 }
 
-/* Main Content Display Area */
+/* Main Content Display Area (Glassmorphism) */
 .main-viewport {
   flex: 1;
   background: var(--card-bg);
-  border: 1px solid var(--border-glow);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 127, 0.1);
-  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 0, 127, 0.1);
+  border-radius: 12px;
   padding: 30px;
   overflow-y: auto;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
   position: relative;
 }
 
@@ -243,17 +247,18 @@ body {
   display: flex;
   gap: 25px;
   align-items: center;
-  background: rgba(0,0,0,0.4);
+  background: rgba(255, 255, 255, 0.05);
   padding: 20px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 25px;
+  backdrop-filter: blur(8px);
   flex-wrap: wrap;
 }
 
 .profile-avatar {
-  width: 100px;
-  height: 100px;
+  width: 105px;
+  height: 105px;
   border-radius: 50%;
   border: 3px solid var(--pink);
   box-shadow: 0 0 15px var(--pink);
@@ -268,24 +273,33 @@ body {
 
 .profile-info p {
   color: #ccc;
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 5px;
+}
+
+.social-btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
 }
 
 .github-link-btn {
   display: inline-block;
-  margin-top: 12px;
-  padding: 8px 18px;
+  padding: 7px 15px;
   background: var(--pink);
   color: #fff;
   text-decoration: none;
   font-weight: bold;
   font-family: 'Orbitron', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   border-radius: 4px;
   box-shadow: 0 0 10px var(--pink);
   transition: 0.3s;
 }
+
+.linkedin-btn { background: #0077b5; box-shadow: 0 0 10px #0077b5; }
+.cp-btn { background: #f39c12; box-shadow: 0 0 10px #f39c12; }
 
 .github-link-btn:hover {
   background: var(--neon-cyan);
@@ -296,20 +310,21 @@ body {
 /* Skills Grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 15px;
 }
 
 .skill-card {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 16px;
   border-left: 3px solid var(--neon-cyan);
-  border-radius: 4px;
+  border-radius: 6px;
+  backdrop-filter: blur(5px);
 }
 
 .skill-name {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
@@ -330,22 +345,23 @@ body {
 /* Project Cards */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
 .project-card {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 18px;
   transition: 0.3s;
+  backdrop-filter: blur(8px);
 }
 
 .project-card:hover {
   border-color: var(--pink);
   transform: translateY(-4px);
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+  box-shadow: 0 0 18px rgba(255, 0, 127, 0.3);
 }
 
 .project-card h3 {
@@ -362,6 +378,58 @@ body {
   line-height: 1.4;
 }
 
+.project-link {
+  color: var(--pink);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.project-link:hover {
+  color: var(--neon-cyan);
+}
+
+/* Contact List */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.contact-item {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 18px;
+  border-radius: 6px;
+  border-left: 3px solid var(--pink);
+  font-size: 15px;
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.social-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.social-card:hover {
+  background: var(--pink);
+  box-shadow: 0 0 12px var(--pink);
+}
+
 /* === BOTTOM HUD & FOOTER === */
 .hud-bottom {
   position: relative;
@@ -373,7 +441,6 @@ body {
   gap: 20px;
 }
 
-/* GTA Minimap Radar */
 .minimap-radar {
   width: 90px;
   height: 90px;
@@ -416,7 +483,6 @@ body {
   font-weight: bold;
 }
 
-/* Mission Complete Toast Banner */
 .mission-toast {
   background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.85) 80%, transparent 100%);
   padding: 10px 20px;
@@ -440,79 +506,26 @@ body {
   text-transform: uppercase;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
 ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 3px; }
 
-/* ==========================================================
-   📱 MOBILE & TABLET RESPONSIVE MEDIA QUERIES (UPDATED)
-========================================================== */
+/* Responsive Media Queries */
 @media screen and (max-width: 900px) {
-  body {
-    overflow-y: auto;
-  }
-
-  .hud-top {
-    flex-direction: column;
-    justify-content: center;
-    padding: 15px;
-  }
-
-  .hud-right {
-    justify-content: center;
-  }
-
-  .game-container {
-    flex-direction: column;
-    height: auto;
-    padding: 0 15px;
-  }
-
-  .side-menu {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .menu-item {
-    flex: 1 1 calc(50% - 10px);
-    font-size: 20px;
-    padding: 10px;
-  }
-
-  .main-viewport {
-    height: auto;
-    min-height: 400px;
-    padding: 20px;
-  }
-
-  .hud-bottom {
-    flex-direction: column-reverse;
-    align-items: center;
-    padding: 20px 15px;
-  }
-
-  .profile-card {
-    flex-direction: column;
-    text-align: center;
-  }
+  body { overflow-y: auto; }
+  .hud-top { flex-direction: column; justify-content: center; padding: 15px; }
+  .hud-right { justify-content: center; }
+  .game-container { flex-direction: column; height: auto; padding: 0 15px; }
+  .side-menu { width: 100%; flex-direction: row; flex-wrap: wrap; }
+  .menu-item { flex: 1 1 calc(50% - 10px); font-size: 20px; padding: 10px; }
+  .main-viewport { height: auto; min-height: 400px; padding: 20px; }
+  .hud-bottom { flex-direction: column-reverse; align-items: center; padding: 20px 15px; }
+  .profile-card { flex-direction: column; text-align: center; }
 }
 
 @media screen and (max-width: 480px) {
-  .menu-item {
-    flex: 1 1 100%;
-  }
-
-  .hud-title {
-    font-size: 24px;
-  }
-
-  .money-counter, .live-clock {
-    font-size: 16px;
-  }
-
-  .section-title {
-    font-size: 30px;
-  }
+  .menu-item { flex: 1 1 100%; }
+  .hud-title { font-size: 22px; }
+  .money-counter, .live-clock { font-size: 15px; }
+  .section-title { font-size: 28px; }
 }
