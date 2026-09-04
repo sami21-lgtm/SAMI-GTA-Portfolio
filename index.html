@@ -1,239 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAMI BUILDS - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Fonts to match the GTA exact look -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Yellowtail&family=Roboto:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD. Emtiaz Hossain Sami | GTA VI Vice City Portfolio</title>
+  <!-- Google Fonts for GTA Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-overlay"></div>
 
-    <!-- Top Right HUD -->
-    <div class="hud-container">
-        <div class="hud-item rank-box">
-            <span class="hud-label">LEADER ROLE</span>
-            <div class="rank-number">21</div>
-        </div>
-        <div class="hud-item time-box">
-            <span class="hud-day">FRI</span>
-            <span class="hud-time" id="clock">15:22:30</span>
-        </div>
-        <div class="hud-item money-box">
-            <span class="hud-money">$1,089,506</span>
-            <div class="hud-stars">⭐⭐⭐⭐⭐</div>
-        </div>
+  <div class="bg-grid"></div>
+
+  <!-- GTA HUD TOP BAR -->
+  <header class="gta-hud">
+    <div class="hud-title">SAMI BUILDS // GTA VI PORTFOLIO</div>
+    <div class="hud-stats">
+      <div class="hud-money">$2,850,000</div>
+      <div class="hud-stars">★★★★★</div>
+      <div class="hud-time" id="hud-clock">10:57:00 PM</div>
     </div>
+  </header>
 
-    <!-- Main Container -->
-    <div class="main-layout">
-        
-        <!-- Left Sidebar -->
-        <aside class="sidebar">
-            <div class="logo-container">
-                <h1 class="main-title">SAMI<br>BUILDS</h1>
-                <span class="cursive-subtitle">Portfolio</span>
-            </div>
+  <!-- MAIN INTERACTIVE CONTAINER -->
+  <main class="game-container">
 
-            <nav class="gta-menu">
-                <ul id="menu-list">
-                    <li class="menu-item disabled">START GAME</li>
-                    <li class="menu-item active" data-target="about"><span class="check">✔</span> ABOUT ME</li>
-                    <li class="menu-item" data-target="skills"><span class="check">✔</span> SKILLS</li>
-                    <li class="menu-item" data-target="projects"><span class="check">✔</span> PROJECTS</li>
-                    <li class="menu-item" data-target="experience"><span class="check">✔</span> EXPERIENCE</li>
-                    <li class="menu-item" data-target="achievements"><span class="check">✔</span> ACHIEVEMENTS</li>
-                    <li class="menu-item" data-target="academy"><span class="check">✔</span> ACADEMY</li>
-                    <li class="menu-item" data-target="contact"><span class="check">✔</span> CONTACT</li>
-                    <li class="menu-item exit disabled">EXIT GAME</li>
-                </ul>
-            </nav>
+    <!-- SIDEBAR NAVIGATION MENU -->
+    <nav class="sidebar-menu">
+      <button class="menu-btn active" onclick="switchTab('about', this)">
+        ▶ ABOUT ME <span>[01]</span>
+      </button>
+      <button class="menu-btn" onclick="switchTab('skills', this)">
+        ▶ SKILLS & TECH <span>[02]</span>
+      </button>
+      <button class="menu-btn" onclick="switchTab('projects', this)">
+        ▶ PROJECTS <span>[03]</span>
+      </button>
+      <button class="menu-btn" onclick="switchTab('competitive', this)">
+        ▶ COMPETITIVE & ROBOTICS <span>[04]</span>
+      </button>
+      <button class="menu-btn" onclick="switchTab('contact', this)">
+        ▶ CONTACT MISSION <span>[05]</span>
+      </button>
+    </nav>
 
-            <!-- Bottom Left Map & Objective -->
-            <div class="objective-container">
-                <div class="minimap">
-                    <div class="player-blip"></div>
-                </div>
-                <div class="objective-info">
-                    <div class="obj-label">CURRENT OBJECTIVE</div>
-                    <div class="obj-desc">TRACE THE FULL CAREER PATH</div>
-                    <div class="obj-sub">Build next level digital experiences</div>
-                </div>
-            </div>
+    <!-- CONTENT DISPLAY PANEL -->
+    <section class="content-panel">
 
-            <!-- Footer Controls -->
-            <div class="footer-controls">
-                <span>View Daily Map/Inst</span>
-                <span>Auto Keyboard</span>
-                <span>Play Legendary</span>
-            </div>
-        </aside>
+      <!-- ABOUT ME TAB -->
+      <div id="about" class="tab-content active">
+        <h2>About Me</h2>
+        <p>
+          I am <strong>MD. Emtiaz Hossain Sami</strong>, a Software Engineering student at 
+          <strong>Daffodil International University (DIU)</strong> with a passion for building functional and aesthetic digital experiences[cite: 1].
+        </p>
+        <p>
+          As a front-end developer, I specialize in <strong>Glassmorphism design</strong> and responsive web interfaces[cite: 1]. Beyond the screen, I am an active competitive programmer on Codeforces and a robotics enthusiast, having successfully developed hardware prototypes like a Human Following Robot[cite: 1].
+        </p>
 
-        <!-- Right Content Area -->
-        <main class="content-area">
-            
-            <!-- ABOUT SECTION -->
-            <section id="about" class="panel active-panel">
-                <div class="panel-header">
-                    <h2>ABOUT</h2>
-                    <span class="cursive-header">Me</span>
-                </div>
-                <div class="panel-box">
-                    <p class="bio">Hey, I'm MD. Emtiaz Hossain Sami, a Software Engineering student at DIU and Front-End Developer who builds digital experiences that aren't just functional – they're memorable[cite: 1].</p>
-                    
-                    <div class="stats-list">
-                        <div class="stat-row">
-                            <span class="stat-icon">👤</span>
-                            <div class="stat-details">
-                                <span class="stat-title">AGE</span>
-                                <span class="stat-value">20+ (Leveling Up)</span>
-                            </div>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-icon">📍</span>
-                            <div class="stat-details">
-                                <span class="stat-title">LOCATION</span>
-                                <span class="stat-value">Dhaka, Bangladesh-1207[cite: 1]</span>
-                            </div>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-icon">🛡️</span>
-                            <div class="stat-details">
-                                <span class="stat-title">STATUS</span>
-                                <span class="stat-value">Building my dreams[cite: 1]</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="gta-btn">VIEW JOURNEY ></button>
-                </div>
-            </section>
+        <div class="card-grid" style="margin-top: 25px;">
+          <div class="card">
+            <h3>STATUS</h3>
+            <p>Software Engineering Student[cite: 1]</p>
+            <p style="color: var(--cyan);">Daffodil International University[cite: 1]</p>
+          </div>
+          <div class="card">
+            <h3>SPECIALIZATION</h3>
+            <p>Glassmorphism & Responsive Web Design[cite: 1]</p>
+          </div>
+          <div class="card">
+            <h3>LOCATION</h3>
+            <p>Kallyanpur, Dhaka, Bangladesh[cite: 1]</p>
+          </div>
+        </div>
+      </div>
 
-            <!-- SKILLS SECTION -->
-            <section id="skills" class="panel">
-                <div class="panel-header">
-                    <h2>SKILLS</h2>
-                    <span class="cursive-header">Unlocked</span>
-                </div>
-                <div class="panel-box">
-                    <div class="skill-row">
-                        <span class="skill-name">HTML / CSS</span>
-                        <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
-                        <span class="skill-pct">95%</span>
-                    </div>
-                    <div class="skill-row">
-                        <span class="skill-name">JAVASCRIPT</span>
-                        <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
-                        <span class="skill-pct">85%</span>
-                    </div>
-                    <div class="skill-row">
-                        <span class="skill-name">GLASSMORPHISM</span>
-                        <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
-                        <span class="skill-pct">90%</span>
-                    </div>
-                    <div class="skill-row">
-                        <span class="skill-name">C/C++ (ALGO)</span>
-                        <div class="progress-track"><div class="progress-fill" style="width: 88%;"></div></div>
-                        <span class="skill-pct">88%</span>
-                    </div>
-                    <div class="skill-row">
-                        <span class="skill-name">ROBOTICS</span>
-                        <div class="progress-track"><div class="progress-fill" style="width: 80%;"></div></div>
-                        <span class="skill-pct">80%</span>
-                    </div>
-                </div>
-            </section>
+      <!-- SKILLS TAB -->
+      <div id="skills" class="tab-content">
+        <h2>Skills & Technologies</h2>
+        <p>Equipped weapons and technical stack unlocked:</p>
 
-            <!-- PROJECTS SECTION -->
-            <section id="projects" class="panel">
-                <div class="panel-header">
-                    <h2>PROJECTS</h2>
-                    <span class="cursive-header">Showcase</span>
-                </div>
-                <div class="panel-box">
-                    <ul class="item-list">
-                        <li>
-                            <div class="item-title">HOSTEL MANAGEMENT SYSTEM</div>
-                            <div class="item-desc">Full stack application build[cite: 1]</div>
-                        </li>
-                        <li>
-                            <div class="item-title">MODERN HOSPITAL SYSTEM</div>
-                            <div class="item-desc">Advanced UI/UX Glassmorphism[cite: 1]</div>
-                        </li>
-                        <li>
-                            <div class="item-title">HOTEL MANAGEMENT SYSTEM</div>
-                            <div class="item-desc">Digital platform[cite: 1]</div>
-                        </li>
-                    </ul>
-                    <button class="gta-btn" onclick="window.open('https://github.com/sami21-lgtm', '_blank')">VIEW ALL PROJECTS ></button>
-                </div>
-            </section>
+        <div style="margin-top: 15px;">
+          <span class="badge">HTML5</span>
+          <span class="badge">CSS3 (Glassmorphism)[cite: 1]</span>
+          <span class="badge">JavaScript (ES6+)</span>
+          <span class="badge">Responsive UI Design[cite: 1]</span>
+          <span class="badge">Competitive Programming[cite: 1]</span>
+          <span class="badge">Algorithmic Logic[cite: 1]</span>
+          <span class="badge">Robotics Hardware Prototypes[cite: 1]</span>
+          <span class="badge">Git & GitHub[cite: 1]</span>
+        </div>
 
-            <!-- ACHIEVEMENTS SECTION -->
-            <section id="achievements" class="panel">
-                <div class="panel-header">
-                    <h2>ACHIEVEMENTS</h2>
-                    <span class="cursive-header">Unlocked</span>
-                </div>
-                <div class="panel-box">
-                    <ul class="item-list">
-                        <li>
-                            <div class="item-title">COMPETITIVE PROGRAMMER</div>
-                            <div class="item-desc">157+ problems solved on Codeforces (samiemtiaz008)[cite: 1]</div>
-                        </li>
-                        <li>
-                            <div class="item-title">HARDWARE PROTOTYPE</div>
-                            <div class="item-desc">Successfully developed a Human Following Robot[cite: 1]</div>
-                        </li>
-                        <li>
-                            <div class="item-title">PHYSICAL FITNESS</div>
-                            <div class="item-desc">Balancing technical pursuits with bodybuilding[cite: 1]</div>
-                        </li>
-                    </ul>
-                    <button class="gta-btn">VIEW CERTIFICATE ></button>
-                </div>
-            </section>
+        <div class="card-grid" style="margin-top: 25px;">
+          <div class="card">
+            <h3>FRONT-END DEVELOPMENT</h3>
+            <p>Crafting modern interactive web interfaces with Glassmorphism aesthetic[cite: 1].</p>
+          </div>
+          <div class="card">
+            <h3>COMPETITIVE PROGRAMMING</h3>
+            <p>Algorithmic logic and problem solving with 157+ solved problems on Codeforces[cite: 1].</p>
+          </div>
+          <div class="card">
+            <h3>ROBOTICS</h3>
+            <p>Designing & building hardware prototypes such as Human Following Robots[cite: 1].</p>
+          </div>
+        </div>
+      </div>
 
-            <!-- CONTACT SECTION -->
-            <section id="contact" class="panel">
-                <div class="panel-header">
-                    <h2>CONTACT</h2>
-                    <span class="cursive-header">Let's Connect</span>
-                </div>
-                <div class="panel-box">
-                    <div class="stats-list">
-                        <div class="stat-row">
-                            <div class="stat-details">
-                                <span class="stat-title">EMAIL</span>
-                                <span class="stat-value">samiemtiaz38@gmail.com[cite: 1]</span>
-                            </div>
-                        </div>
-                        <div class="stat-row">
-                            <div class="stat-details">
-                                <span class="stat-title">LOCATION</span>
-                                <span class="stat-value">House 03, Road 12, Kallyanpur, Dhaka[cite: 1]</span>
-                            </div>
-                        </div>
-                        <div class="stat-row">
-                            <div class="stat-details">
-                                <span class="stat-title">LINKEDIN</span>
-                                <span class="stat-value">/in/emtiaz-hossain-6b4416340[cite: 1]</span>
-                            </div>
-                        </div>
-                        <div class="stat-row">
-                            <div class="stat-details">
-                                <span class="stat-title">GITHUB</span>
-                                <span class="stat-value">github.com/sami21-lgtm[cite: 1]</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="gta-btn">SEND MESSAGE ></button>
-                </div>
-            </section>
+      <!-- PROJECTS TAB -->
+      <div id="projects" class="tab-content">
+        <h2>Selected Projects</h2>
+        <div class="card-grid">
 
-        </main>
-    </div>
-    <script src="script.js"></script>
+          <div class="card">
+            <h3>Hostel Management System</h3>
+            <p>Full Web system built for managing student accommodation[cite: 1].</p>
+            <a href="https://github.com/sami21-lgtm/Hostel-Management-System" target="_blank" class="btn-link">View Repo</a>
+          </div>
+
+          <div class="card">
+            <h3>Hotel Management System</h3>
+            <p>Web portal for hotel booking and management[cite: 1].</p>
+            <a href="https://sami21-lgtm.github.io/Hotel-Management-system/" target="_blank" class="btn-link">Live Demo</a>
+          </div>
+
+          <div class="card">
+            <h3>Modern Hospital Management</h3>
+            <p>Healthcare system interface designed with modern web technology[cite: 1].</p>
+            <a href="https://sami21-lgtm.github.io/modern-hospital-management-system/" target="_blank" class="btn-link">Live Demo</a>
+          </div>
+
+          <div class="card">
+            <h3>New Radar System</h3>
+            <p>Interactive radar system web visualization[cite: 1].</p>
+            <a href="https://sami21-lgtm.github.io/New-rader-system/" target="_blank" class="btn-link">Live Demo</a>
+          </div>
+
+          <div class="card">
+            <h3>Family Resort</h3>
+            <p>Resort booking and view interface[cite: 1].</p>
+            <a href="https://sami21-lgtm.github.io/Family-Resort/" target="_blank" class="btn-link">Live Demo</a>
+          </div>
+
+          <div class="card">
+            <h3>Pahela Baishakh Celebration</h3>
+            <p>Festive web design for Bengali New Year[cite: 1].</p>
+            <a href="https://sami21-lgtm.github.io/Pahela-Baishakh/" target="_blank" class="btn-link">Live Demo</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COMPETITIVE PROGRAMMING TAB -->
+      <div id="competitive" class="tab-content">
+        <h2>Competitive Programming & Robotics</h2>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3>CODEFORCES</h3>
+            <p>Handle: <strong>samiemtiaz008</strong>[cite: 1]</p>
+            <p>157+ Algorithmic Problems Solved[cite: 1]</p>
+            <a href="https://codeforces.com/profile/samiemtiaz008" target="_blank" class="btn-link">View Profile</a>
+          </div>
+
+          <div class="card">
+            <h3>BEECROWD JUDGE</h3>
+            <p>Profile ID: <strong>1089506</strong>[cite: 1]</p>
+            <p>Regular practice on online judge systems[cite: 1].</p>
+            <a href="https://judge.beecrowd.com/en/profile/1089506" target="_blank" class="btn-link">View Profile</a>
+          </div>
+
+          <div class="card">
+            <h3>HUMAN FOLLOWING ROBOT</h3>
+            <p>Hardware Prototype[cite: 1]</p>
+            <p>Built functional sensors & motor driver based autonomous robot[cite: 1].</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT TAB -->
+      <div id="contact" class="tab-content">
+        <h2>Contact Mission</h2>
+        <p>Get in touch for web development projects, robotics collaboration, or tutoring[cite: 1].</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3>EMAIL</h3>
+            <p>samiemtiaz38@gmail.com[cite: 1]</p>
+          </div>
+
+          <div class="card">
+            <h3>PHONE / WHATSAPP</h3>
+            <p>+880 1998453990[cite: 1]</p>
+          </div>
+
+          <div class="card">
+            <h3>LOCATION</h3>
+            <p>House No: 03, Road No: 12, Kallyanpur, Dhaka-1207, Bangladesh[cite: 1]</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 25px;">
+          <h3>SOCIAL LINKS</h3>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+            <a href="https://github.com/sami21-lgtm" target="_blank" class="btn-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank" class="btn-link">LinkedIn</a>
+            <a href="https://www.facebook.com/emtiaz.hossain.2478" target="_blank" class="btn-link">Facebook</a>
+            <a href="https://www.instagram.com/sami_e.m.t.i.a.z_008/" target="_blank" class="btn-link">Instagram</a>
+            <a href="https://x.com/008emtiazS" target="_blank" class="btn-link">X (Twitter)</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MISSION FOOTER BAR -->
+  <footer class="mission-bar">
+    <div>CURRENT OBJECTIVE: BUILD NEXT LEVEL DIGITAL EXPERIENCES</div>
+    <div style="color: var(--cyan);">MISSION PASSED +$50,000</div>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
