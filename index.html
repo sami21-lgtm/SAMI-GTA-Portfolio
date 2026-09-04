@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMI | GTA VI Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <!-- TOP HUD BAR -->
+  <header class="hud-top">
+    <div class="hud-left">
+      <div class="hud-title">SAMI BRANDS</div>
+      <div class="claude-tag"><i class="fa-solid fa-code"></i> GTA VI CODE</div>
+    </div>
+    <div class="hud-right">
+      <div class="wanted-stars">
+        <i class="fa-solid fa-star active"></i>
+        <i class="fa-solid fa-star active"></i>
+        <i class="fa-solid fa-star active"></i>
+        <i class="fa-solid fa-star active"></i>
+        <i class="fa-solid fa-star active"></i>
+      </div>
+      <div class="money-counter">$1,000,000</div>
+      
+      <!-- Continuous Live Clock -->
+      <div class="live-clock" id="clock">00:00:00 AM</div>
+      
+      <div class="bars">
+        <div class="bar bar-health"></div>
+        <div class="bar bar-armor"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN GAME INTERFACE -->
+  <main class="game-container">
+    
+    <!-- LEFT SIDEBAR NAVIGATION -->
+    <nav class="side-menu">
+      <div class="menu-item active" onclick="switchTab('about', this)">
+        <span><i class="fa-solid fa-user"></i> START GAME</span>
+        <span class="badge">START</span>
+      </div>
+      <div class="menu-item" onclick="switchTab('skills', this)">
+        <span><i class="fa-solid fa-bolt"></i> SKILLS</span>
+        <span class="badge">UNLOCKED</span>
+      </div>
+      <div class="menu-item" onclick="switchTab('projects', this)">
+        <span><i class="fa-solid fa-folder-open"></i> PROJECTS</span>
+        <span class="badge" id="repo-count">0</span>
+      </div>
+      <div class="menu-item" onclick="switchTab('achievements', this)">
+        <span><i class="fa-solid fa-trophy"></i> ACHIEVEMENTS</span>
+        <span class="badge">PASS</span>
+      </div>
+      <div class="menu-item" onclick="switchTab('contact', this)">
+        <span><i class="fa-solid fa-phone"></i> CONTACT</span>
+        <span class="badge">CONNECT</span>
+      </div>
+    </nav>
+
+    <!-- RIGHT CONTENT VIEWPORT -->
+    <section class="main-viewport">
+      
+      <!-- ABOUT / HOME PANEL -->
+      <div id="about" class="content-panel active">
+        <div class="section-title">WHO AM I <span>DEVELOPER PROFILE</span></div>
+        <div class="profile-card">
+          <img id="user-avatar" class="profile-avatar" src="https://github.com/sami21-lgtm.png" alt="Sami Profile">
+          <div class="profile-info">
+            <h2 id="user-name">Sami (sami21-lgtm)</h2>
+            <p id="user-bio">Full Stack Developer & Cyber Enthusiast building next-gen web experiences.</p>
+            <a href="https://github.com/sami21-lgtm" target="_blank" class="github-link-btn">
+              <i class="fa-brands fa-github"></i> VIEW GITHUB PROFILE
+            </a>
+          </div>
+        </div>
+
+        <p style="color:#ddd; line-height: 1.6; font-size: 17px;">
+          Welcome to my Vice City inspired personal realm. I specialize in crafting ultra-responsive web applications, back-end APIs, and creative UI/UX experiences. Explore my skills, repositories, and achievements through the GTA pause menu.
+        </p>
+      </div>
+
+      <!-- SKILLS PANEL -->
+      <div id="skills" class="content-panel">
+        <div class="section-title">SKILLS <span>UNLOCKED</span></div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-name"><span>HTML5 / CSS3</span> <span>98%</span></div>
+            <div class="skill-progress"><div class="skill-fill" style="width: 98%;"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name"><span>JavaScript (ES6+)</span> <span>90%</span></div>
+            <div class="skill-progress"><div class="skill-fill" style="width: 90%;"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name"><span>React / Front-End</span> <span>85%</span></div>
+            <div class="skill-progress"><div class="skill-fill" style="width: 85%;"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name"><span>Node.js / Express</span> <span>80%</span></div>
+            <div class="skill-progress"><div class="skill-fill" style="width: 80%;"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name"><span>Git & GitHub</span> <span>95%</span></div>
+            <div class="skill-progress"><div class="skill-fill" style="width: 95%;"></div></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-name"><span>UI/UX & Styling</span> <span>92%</span></div>
+            <div class="skill-progress"><div class="skill-fill" style="width: 92%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS PANEL -->
+      <div id="projects" class="content-panel">
+        <div class="section-title">PROJECTS <span>SHOWCASE</span></div>
+        <div class="projects-grid" id="projects-container">
+          <p style="color:#aaa;">Loading GitHub Repositories for <b>sami21-lgtm</b>...</p>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS PANEL -->
+      <div id="achievements" class="content-panel">
+        <div class="section-title">ACHIEVEMENTS <span>UNLOCKED</span></div>
+        <div class="skills-grid">
+          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
+            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-award"></i> First Commit</span> <span>100%</span></div>
+            <p style="font-size:13px; color:#aaa; margin-top:5px;">Successfully kicked off the coding journey on GitHub.</p>
+          </div>
+          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
+            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-code-merge"></i> Pull Request Master</span> <span>100%</span></div>
+            <p style="font-size:13px; color:#aaa; margin-top:5px;">Merged multiple feature branches without merge conflicts.</p>
+          </div>
+          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
+            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-bug"></i> Bug Hunter</span> <span>100%</span></div>
+            <p style="font-size:13px; color:#aaa; margin-top:5px;">Squashed critical bugs in record time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT PANEL -->
+      <div id="contact" class="content-panel">
+        <div class="section-title">CONTACT <span>LET'S CONNECT</span></div>
+        <p style="color:#ccc; margin-bottom:15px;">Send a mission dispatch or connect directly:</p>
+        <div style="display:flex; flex-direction:column; gap:12px; max-width:400px;">
+          <a href="https://github.com/sami21-lgtm" target="_blank" class="menu-item" style="border-left-color:var(--pink);">
+            <span><i class="fa-brands fa-github"></i> GitHub: sami21-lgtm</span>
+          </a>
+          <div class="menu-item" style="border-left-color:var(--neon-cyan);">
+            <span><i class="fa-solid fa-envelope"></i> Email: Available via GitHub</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- BOTTOM HUD -->
+  <footer class="hud-bottom">
+    <div class="minimap-radar">
+      <div class="radar-grid"></div>
+      <div class="radar-blip"></div>
+      <div class="minimap-location">DHAKA, BD</div>
+    </div>
+
+    <div class="mission-toast">
+      <h1>MISSION COMPLETE</h1>
+      <p>RESUME SAVED • ALL SYSTEMS OPERATIONAL</p>
+    </div>
+  </footer>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
