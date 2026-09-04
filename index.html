@@ -3,227 +3,309 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MD. Emtiaz Hossain Sami | GTA VI Portfolio</title>
+  <title>SAMI BUILDS | GTA VI Portfolio</title>
   
-  <!-- Google Fonts -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="overlay"></div>
+  <div class="background-overlay"></div>
 
   <!-- TOP HUD BAR -->
-  <header class="hud-top">
-    <div class="hud-left">
-      <div class="hud-title">MD. EMTIAZ HOSSAIN SAMI</div>
-      <div class="claude-tag"><i class="fa-solid fa-graduation-cap"></i> DIU SWE STUDENT</div>
+  <header class="hud-header">
+    <div class="hud-brand">
+      <h1 class="brand-title">SAMI BUILDS <span class="sub-title">PORTFOLIO</span></h1>
+      <span class="claude-badge"><i class="fa-solid fa-graduation-cap"></i> DIU SWE</span>
     </div>
-    <div class="hud-right">
-      <div class="wanted-stars">
+
+    <div class="hud-center-tag">
+      <span id="location-tag"><i class="fa-solid fa-location-dot"></i> VICE BEACH</span>
+    </div>
+
+    <div class="hud-stats">
+      <div class="clock-box" id="clock">00:00:00</div>
+      <div class="money-box">$1,000,000</div>
+      <div class="stars-box">
         <i class="fa-solid fa-star active"></i>
         <i class="fa-solid fa-star active"></i>
         <i class="fa-solid fa-star active"></i>
         <i class="fa-solid fa-star active"></i>
         <i class="fa-solid fa-star active"></i>
       </div>
-      <div class="money-counter">$1,000,000</div>
-      
-      <!-- Continuous Live Clock -->
-      <div class="live-clock" id="clock">00:00:00 AM</div>
-      
-      <div class="bars">
+      <div class="bars-box">
         <div class="bar bar-health"></div>
         <div class="bar bar-armor"></div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN GAME INTERFACE -->
-  <main class="game-container">
+  <!-- MAIN INTERFACE -->
+  <main class="main-container">
     
-    <!-- LEFT SIDEBAR NAVIGATION -->
+    <!-- LEFT NAVIGATION MENU -->
     <nav class="side-menu">
-      <div class="menu-item active" onclick="switchTab('about', this)">
-        <span><i class="fa-solid fa-user"></i> START GAME</span>
-        <span class="badge">PROFILE</span>
-      </div>
-      <div class="menu-item" onclick="switchTab('skills', this)">
-        <span><i class="fa-solid fa-bolt"></i> SKILLS & STATS</span>
-        <span class="badge">UNLOCKED</span>
-      </div>
-      <div class="menu-item" onclick="switchTab('projects', this)">
-        <span><i class="fa-solid fa-folder-open"></i> PROJECTS</span>
-        <span class="badge" id="repo-count">LIVE</span>
-      </div>
-      <div class="menu-item" onclick="switchTab('achievements', this)">
-        <span><i class="fa-solid fa-trophy"></i> ACHIEVEMENTS</span>
-        <span class="badge">CP & ROBOTICS</span>
-      </div>
-      <div class="menu-item" onclick="switchTab('contact', this)">
-        <span><i class="fa-solid fa-phone"></i> CONTACT</span>
-        <span class="badge">DISPATCH</span>
-      </div>
+      <button class="menu-btn active" onclick="switchTab('start', this, 'VICE BEACH')">
+        <i class="fa-solid fa-play"></i> START GAME
+      </button>
+      <button class="menu-btn" onclick="switchTab('about', this, 'OCEAN DRIVE')">
+        <i class="fa-solid fa-user"></i> ABOUT ME
+      </button>
+      <button class="menu-btn" onclick="switchTab('skills', this, 'PORT KELLOGG')">
+        <i class="fa-solid fa-bolt"></i> SKILLS
+      </button>
+      <button class="menu-btn" onclick="switchTab('projects', this, 'MARINA BAYFRONT')">
+        <i class="fa-solid fa-code"></i> PROJECTS
+      </button>
+      <button class="menu-btn" onclick="switchTab('experience', this, 'GALLE SUNSET')">
+        <i class="fa-solid fa-briefcase"></i> EXPERIENCE
+      </button>
+      <button class="menu-btn" onclick="switchTab('achievements', this, 'DOWNTOWN')">
+        <i class="fa-solid fa-trophy"></i> ACHIEVEMENTS
+      </button>
+      <button class="menu-btn" onclick="switchTab('academy', this, 'DIU CAMPUS')">
+        <i class="fa-solid fa-chalkboard-user"></i> ACADEMY
+      </button>
+      <button class="menu-btn" onclick="switchTab('contact', this, 'THE KEYS')">
+        <i class="fa-solid fa-envelope"></i> CONTACT
+      </button>
+      <button class="menu-btn exit-btn" onclick="triggerExitGame()">
+        <i class="fa-solid fa-power-off"></i> EXIT GAME
+      </button>
     </nav>
 
-    <!-- RIGHT CONTENT VIEWPORT -->
-    <section class="main-viewport">
+    <!-- CENTER / RIGHT DISPLAY PANEL -->
+    <section class="viewport-area">
       
-      <!-- ABOUT / HOME PANEL -->
-      <div id="about" class="content-panel active">
-        <div class="section-title">WHO AM I <span>DEVELOPER PROFILE</span></div>
-        <div class="profile-card">
-          <img id="user-avatar" class="profile-avatar" src="https://github.com/sami21-lgtm.png" alt="MD. Emtiaz Hossain Sami">
-          <div class="profile-info">
-            <h2 id="user-name">MD. Emtiaz Hossain Sami</h2>
-            <p id="user-bio">Software Engineering Student @ DIU | Web Developer | Competitive Programmer | Robotics & Gym Enthusiast</p>
-            <div class="social-btn-group">
-              <a href="https://github.com/sami21-lgtm" target="_blank" class="github-link-btn"><i class="fa-brands fa-github"></i> GitHub</a>
-              <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank" class="github-link-btn linkedin-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-              <a href="https://codeforces.com/profile/samiemtiaz008" target="_blank" class="github-link-btn cp-btn"><i class="fa-solid fa-code"></i> Codeforces</a>
-            </div>
-          </div>
-        </div>
-
-        <p style="color:#ddd; line-height: 1.7; font-size: 16px;">
-          I am a Software Engineering student at <b>Daffodil International University (DIU)</b> with a passion for building functional and aesthetic digital experiences. As a front-end developer, I specialize in <b>Glassmorphism design</b> and responsive web interfaces. Beyond code, I am an active competitive programmer on Codeforces, a robotics enthusiast (developed a Human Following Robot), and dedicated to fitness and bodybuilding.
-        </p>
-      </div>
-
-      <!-- SKILLS PANEL -->
-      <div id="skills" class="content-panel">
-        <div class="section-title">SKILLS & STATS <span>UNLOCKED</span></div>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-name"><span>Glassmorphism & Web Design</span> <span>98%</span></div>
-            <div class="skill-progress"><div class="skill-fill" style="width: 98%;"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name"><span>HTML5 / CSS3 / JavaScript</span> <span>95%</span></div>
-            <div class="skill-progress"><div class="skill-fill" style="width: 95%;"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name"><span>Competitive Programming (C/C++)</span> <span>88%</span></div>
-            <div class="skill-progress"><div class="skill-fill" style="width: 88%;"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name"><span>Robotics & Hardware Prototyping</span> <span>82%</span></div>
-            <div class="skill-progress"><div class="skill-fill" style="width: 82%;"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name"><span>Git & GitHub Workflow</span> <span>90%</span></div>
-            <div class="skill-progress"><div class="skill-fill" style="width: 90%;"></div></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-name"><span>Responsive UI/UX & Layouts</span> <span>92%</span></div>
-            <div class="skill-progress"><div class="skill-fill" style="width: 92%;"></div></div>
+      <!-- START GAME / HOME -->
+      <div id="start" class="tab-content active">
+        <div class="hero-welcome">
+          <h2 class="hero-name">MD. EMTIAZ HOSSAIN SAMI</h2>
+          <p class="hero-subtitle">Software Engineering Student & Web Developer</p>
+          <div class="hero-badge-group">
+            <span class="pill-tag"><i class="fa-solid fa-laptop-code"></i> Front-End Dev</span>
+            <span class="pill-tag"><i class="fa-solid fa-brain"></i> Competitive Programmer</span>
+            <span class="pill-tag"><i class="fa-solid fa-robot"></i> Robotics Enthusiast</span>
           </div>
         </div>
       </div>
 
-      <!-- PROJECTS PANEL -->
-      <div id="projects" class="content-panel">
-        <div class="section-title">PROJECTS <span>FEATURED WORK</span></div>
+      <!-- ABOUT ME -->
+      <div id="about" class="tab-content">
+        <div class="panel-header">
+          <h2>ABOUT <span>ME</span></h2>
+        </div>
+        <div class="about-card">
+          <p class="bio-text">
+            I am <b>MD. Emtiaz Hossain Sami</b>, a Software Engineering student at <b>Daffodil International University (DIU)</b>. I specialize in building responsive Glassmorphism web interfaces, competitive programming, and hardware prototyping like Human Following Robots.
+          </p>
+          <div class="info-grid">
+            <div class="info-item"><b>NAME:</b> <span>MD. Emtiaz Hossain Sami</span></div>
+            <div class="info-item"><b>EDUCATION:</b> <span>DIU (SWE)</span></div>
+            <div class="info-item"><b>LOCATION:</b> <span>Dhaka, Bangladesh</span></div>
+            <div class="info-item"><b>STATUS:</b> <span>Building Digital Experiences</span></div>
+          </div>
+          <a href="https://github.com/sami21-lgtm" target="_blank" class="gta-action-btn">VIEW GITHUB PORTAL &rarr;</a>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div id="skills" class="tab-content">
+        <div class="panel-header">
+          <h2>SKILLS <span>UNLOCKED</span></h2>
+        </div>
+        <div class="skills-list">
+          <div class="skill-row">
+            <span>HTML5 / CSS3 / GLASSMORPHISM</span> <span>98%</span>
+            <div class="skill-bar"><div class="fill" style="width: 98%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>JAVASCRIPT (ES6+)</span> <span>92%</span>
+            <div class="skill-bar"><div class="fill" style="width: 92%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>C / C++ (COMPETITIVE PROGRAMMING)</span> <span>88%</span>
+            <div class="skill-bar"><div class="fill" style="width: 88%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>RESPONSIVE UI/UX DESIGN</span> <span>95%</span>
+            <div class="skill-bar"><div class="fill" style="width: 95%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>ROBOTICS & ARDUINO HARDWARE</span> <span>82%</span>
+            <div class="skill-bar"><div class="fill" style="width: 82%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <span>GIT & GITHUB WORKFLOW</span> <span>90%</span>
+            <div class="skill-bar"><div class="fill" style="width: 90%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div id="projects" class="tab-content">
+        <div class="panel-header">
+          <h2>PROJECTS <span>SHOWCASE</span></h2>
+        </div>
         <div class="projects-grid">
           <div class="project-card">
-            <h3><i class="fa-solid fa-hospital"></i> Hospital Management System</h3>
-            <p>A modern web application for managing hospital workflow, patients, and doctors with clean UI.</p>
-            <a href="https://sami21-lgtm.github.io/modern-hospital-management-system/" target="_blank" class="project-link">VIEW LIVE DEMO &rarr;</a>
+            <h3>Modern Hospital Management</h3>
+            <p>Full web interface designed for managing patients, appointments, and doctors.</p>
+            <a href="https://sami21-lgtm.github.io/modern-hospital-management-system/" target="_blank" class="proj-link">LIVE DEMO &rarr;</a>
           </div>
           <div class="project-card">
-            <h3><i class="fa-solid fa-hotel"></i> Hotel Management System</h3>
-            <p>Comprehensive hotel booking and management platform built with responsive components.</p>
-            <a href="https://sami21-lgtm.github.io/Hotel-Management-system/" target="_blank" class="project-link">VIEW LIVE DEMO &rarr;</a>
+            <h3>Hotel Management System</h3>
+            <p>Comprehensive hotel booking UI with modern Glassmorphic components.</p>
+            <a href="https://sami21-lgtm.github.io/Hotel-Management-system/" target="_blank" class="proj-link">LIVE DEMO &rarr;</a>
           </div>
           <div class="project-card">
-            <h3><i class="fa-solid fa-radar"></i> New Radar System</h3>
-            <p>Interactive radar system interface web implementation built with dynamic visuals.</p>
-            <a href="https://sami21-lgtm.github.io/New-rader-system/" target="_blank" class="project-link">VIEW LIVE DEMO &rarr;</a>
+            <h3>New Radar System</h3>
+            <p>Interactive radar simulation UI built using pure JavaScript & CSS canvas visualizer.</p>
+            <a href="https://sami21-lgtm.github.io/New-rader-system/" target="_blank" class="proj-link">LIVE DEMO &rarr;</a>
           </div>
           <div class="project-card">
-            <h3><i class="fa-solid fa-building-user"></i> Hostel Management System</h3>
-            <p>Repository housing full code for managing hostel rooms, student allocations, and records.</p>
-            <a href="https://github.com/sami21-lgtm/Hostel-Management-System" target="_blank" class="project-link">VIEW GITHUB REPO &rarr;</a>
+            <h3>Hostel Management System</h3>
+            <p>Repository housing student accommodation & hostel room allocation workflow.</p>
+            <a href="https://github.com/sami21-lgtm/Hostel-Management-System" target="_blank" class="proj-link">GITHUB REPO &rarr;</a>
           </div>
           <div class="project-card">
-            <h3><i class="fa-solid fa-umbrella-beach"></i> Family Resort Web App</h3>
-            <p>A aesthetic resort landing and reservation website featuring smooth glassmorphic elements.</p>
-            <a href="https://sami21-lgtm.github.io/Family-Resort/" target="_blank" class="project-link">VIEW LIVE DEMO &rarr;</a>
-          </div>
-          <div class="project-card">
-            <h3><i class="fa-solid fa-globe"></i> Personal Portal</h3>
-            <p>All-in-one personal showcase and interactive web dashboard.</p>
-            <a href="https://sami21-lgtm.github.io/Own-portal/" target="_blank" class="project-link">VIEW LIVE PORTAL &rarr;</a>
+            <h3>Family Resort Portal</h3>
+            <p>Resort landing web application featuring responsive layouts and smooth animations.</p>
+            <a href="https://sami21-lgtm.github.io/Family-Resort/" target="_blank" class="proj-link">LIVE DEMO &rarr;</a>
           </div>
         </div>
       </div>
 
-      <!-- ACHIEVEMENTS PANEL -->
-      <div id="achievements" class="content-panel">
-        <div class="section-title">ACHIEVEMENTS <span>UNLOCKED</span></div>
-        <div class="skills-grid">
-          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
-            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-laptop-code"></i> Codeforces Solver</span> <span>157+ Problems</span></div>
-            <p style="font-size:13px; color:#aaa; margin-top:5px;">Active solver on Codeforces (@samiemtiaz008) and Beecrowd.</p>
+      <!-- EXPERIENCE -->
+      <div id="experience" class="tab-content">
+        <div class="panel-header">
+          <h2>EXPERIENCE <span>JOURNEY</span></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>B.Sc. in Software Engineering</h4>
+            <span class="time-tag">Daffodil International University (DIU)</span>
+            <p>Focusing on software architecture, algorithms, web development, and robotics projects.</p>
           </div>
-          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
-            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-robot"></i> Human Following Robot</span> <span>Hardware Prototype</span></div>
-            <p style="font-size:13px; color:#aaa; margin-top:5px;">Successfully engineered hardware robot prototype for automated object/human tracking.</p>
+          <div class="timeline-item">
+            <h4>Front-End Web Developer</h4>
+            <span class="time-tag">Glassmorphism & Responsive Web</span>
+            <p>Building high-end aesthetic web applications with clean HTML/CSS/JS and modern frameworks.</p>
           </div>
-          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
-            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-chalkboard-user"></i> Private Tutor</span> <span>ICT & Science</span></div>
-            <p style="font-size:13px; color:#aaa; margin-top:5px;">Educating students in ICT, computer logic, and fundamental science subjects.</p>
-          </div>
-          <div class="skill-card" style="border-left-color: var(--gta-yellow);">
-            <div class="skill-name"><span style="color:var(--gta-yellow);"><i class="fa-solid fa-dumbbell"></i> Fitness & Bodybuilding</span> <span>Peak Condition</span></div>
-            <p style="font-size:13px; color:#aaa; margin-top:5px;">Pushing physical limits at the gym for optimal mental & physical focus.</p>
+          <div class="timeline-item">
+            <h4>Competitive Programmer</h4>
+            <span class="time-tag">Codeforces & Beecrowd</span>
+            <p>157+ problems solved on Codeforces (@samiemtiaz008), focusing on dynamic logic and algorithms.</p>
           </div>
         </div>
       </div>
 
-      <!-- CONTACT PANEL -->
-      <div id="contact" class="content-panel">
-        <div class="section-title">CONTACT <span>DISPATCH MISSION</span></div>
-        
-        <div class="contact-info-list">
-          <div class="contact-item"><i class="fa-solid fa-envelope"></i> <b>Email:</b> samiemtiaz38@gmail.com</div>
-          <div class="contact-item"><i class="fa-solid fa-phone"></i> <b>Phone / WhatsApp:</b> +880 1998453990 / +880 1309970872</div>
-          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> <b>Location:</b> House 03, Road 12, Kallyanpur, Dhaka - 1207, Bangladesh</div>
+      <!-- ACHIEVEMENTS -->
+      <div id="achievements" class="tab-content">
+        <div class="panel-header">
+          <h2>ACHIEVEMENTS <span>UNLOCKED</span></h2>
         </div>
+        <div class="achieve-grid">
+          <div class="achieve-card">
+            <i class="fa-solid fa-code achieve-icon"></i>
+            <h4>157+ CP Problems Solved</h4>
+            <p>Active competitive programmer on Codeforces & Beecrowd judges.</p>
+          </div>
+          <div class="achieve-card">
+            <i class="fa-solid fa-microchip achieve-icon"></i>
+            <h4>Human Following Robot</h4>
+            <p>Successfully designed hardware prototype for autonomous tracking.</p>
+          </div>
+          <div class="achieve-card">
+            <i class="fa-solid fa-dumbbell achieve-icon"></i>
+            <h4>Fitness & Discipline</h4>
+            <p>Maintaining physical conditioning and gym performance alongside code.</p>
+          </div>
+        </div>
+      </div>
 
-        <div class="social-links-grid">
-          <a href="https://github.com/sami21-lgtm" target="_blank" class="social-card"><i class="fa-brands fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank" class="social-card"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-          <a href="https://codeforces.com/profile/samiemtiaz008" target="_blank" class="social-card"><i class="fa-solid fa-code"></i> Codeforces</a>
-          <a href="https://www.facebook.com/emtiaz.hossain.2478" target="_blank" class="social-card"><i class="fa-brands fa-facebook"></i> Facebook</a>
-          <a href="https://www.instagram.com/sami_e.m.t.i.a.z_008/" target="_blank" class="social-card"><i class="fa-brands fa-instagram"></i> Instagram</a>
-          <a href="https://x.com/008emtiazS" target="_blank" class="social-card"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+      <!-- ACADEMY -->
+      <div id="academy" class="tab-content">
+        <div class="panel-header">
+          <h2>ACADEMY <span>ICT & SCIENCE TUTORING</span></h2>
+        </div>
+        <div class="academy-card">
+          <h3>Private Educator for ICT & Science</h3>
+          <p>Dedicated private tutor guiding students in computer logic, ICT fundamentals, and core science subjects.</p>
+          <div class="academy-stats">
+            <div><b>100+</b><span>Topics Taught</span></div>
+            <div><b>157+</b><span>CP Solved</span></div>
+            <div><b>DIU</b><span>Software Eng.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div id="contact" class="tab-content">
+        <div class="panel-header">
+          <h2>CONTACT <span>LET'S CONNECT</span></h2>
+        </div>
+        <div class="contact-box">
+          <p><i class="fa-solid fa-envelope"></i> <b>EMAIL:</b> samiemtiaz38@gmail.com</p>
+          <p><i class="fa-solid fa-phone"></i> <b>PHONE / WHATSAPP:</b> +880 1998453990 / +880 1309970872</p>
+          <p><i class="fa-solid fa-location-dot"></i> <b>LOCATION:</b> Kallyanpur, Dhaka - 1207, Bangladesh</p>
+          
+          <div class="social-links">
+            <a href="https://github.com/sami21-lgtm" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://codeforces.com/profile/samiemtiaz008" target="_blank"><i class="fa-solid fa-code"></i> Codeforces</a>
+            <a href="https://www.facebook.com/emtiaz.hossain.2478" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="https://www.instagram.com/sami_e.m.t.i.a.z_008/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://x.com/008emtiazS" target="_blank"><i class="fa-brands fa-x-twitter"></i> X</a>
+          </div>
         </div>
       </div>
 
     </section>
+
+    <!-- RIGHT HERO CHARACTER IMAGE SECTION -->
+    <section class="hero-character-section">
+      <div class="character-card">
+        <img id="avatar-img" src="https://github.com/sami21-lgtm.png" alt="MD. Emtiaz Hossain Sami">
+        <div class="character-overlay-info">
+          <span class="char-name">SAMI</span>
+          <span class="char-tag">DIU SWE</span>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- BOTTOM HUD -->
   <footer class="hud-bottom">
-    <div class="minimap-radar">
-      <div class="radar-grid"></div>
-      <div class="radar-blip"></div>
-      <div class="minimap-location">DHAKA, BD</div>
+    <div class="minimap-box">
+      <div class="radar-circle">
+        <div class="radar-sweep"></div>
+        <div class="radar-blip"></div>
+      </div>
+      <div class="objective-box">
+        <span class="obj-title">CURRENT OBJECTIVE</span>
+        <span class="obj-desc" id="objective-text">BUILD NEXT LEVEL DIGITAL EXPERIENCES</span>
+      </div>
     </div>
 
-    <div class="mission-toast">
-      <h1>MISSION COMPLETE</h1>
-      <p>RESUME SAVED • ALL SYSTEMS OPERATIONAL</p>
+    <div class="quote-card">
+      <p>"Work till my engine... Creativity is my weapon."</p>
     </div>
   </footer>
 
-  <!-- Custom JavaScript -->
+  <!-- EXIT GAME / MISSION COMPLETE MODAL -->
+  <div class="mission-modal" id="exit-modal">
+    <div class="mission-modal-content">
+      <span class="mission-subtitle">THANK YOU FOR VISITING</span>
+      <h1 class="mission-title">MISSION COMPLETE</h1>
+      <p class="mission-desc">See you soon!</p>
+      <button class="back-home-btn" onclick="resetGame()">BACK TO HOME &gt;</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
