@@ -1,4 +1,4 @@
-// REAL-TIME AUTO UPDATING HUD CLOCK (WITH SECONDS)
+// REAL-TIME ACCURATE CLOCK (AUTO UPDATING EVERY 1 SECOND)
 function updateClock() {
   const now = new Date();
   let hours = now.getHours();
@@ -11,22 +11,22 @@ function updateClock() {
   hours = hours ? hours : 12; 
 
   // Format single digits with leading zero
-  const formattedHours = hours < 10 ? '0' + hours : hours;
-  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-  const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+  const hh = hours < 10 ? '0' + hours : hours;
+  const mm = minutes < 10 ? '0' + minutes : minutes;
+  const ss = seconds < 10 ? '0' + seconds : seconds;
 
-  // Render continuous live ticking time
+  // Render to DOM
   const clockElement = document.getElementById('hud-clock');
   if (clockElement) {
-    clockElement.innerText = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+    clockElement.innerText = `${hh}:${mm}:${ss} ${ampm}`;
   }
 }
 
-// Update clock every 1 second (1000 ms) automatically
+// 1000ms (1 second) interval for live updating
 setInterval(updateClock, 1000);
-updateClock(); // Initial call
+updateClock();
 
-// GTA Menu Beep Sound Synthesizer (Web Audio API)
+// GTA MENU BEEP SOUND SYNTHESIZER
 function playBeep() {
   try {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -34,37 +34,37 @@ function playBeep() {
     const gain = audioCtx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.08);
+    osc.frequency.setValueAtTime(850, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(420, audioCtx.currentTime + 0.07);
 
-    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.07);
 
     osc.connect(gain);
     gain.connect(audioCtx.destination);
 
     osc.start();
-    osc.stop(audioCtx.currentTime + 0.08);
+    osc.stop(audioCtx.currentTime + 0.07);
   } catch (e) {
-    // Browser autoplay policy handling
+    // Autoplay restrictions handle
   }
 }
 
-// Switch Tabs Navigation
+// MENU TAB SWITCHING
 function switchTab(tabId, element) {
   playBeep();
 
-  // Update Buttons Highlight State
-  const buttons = document.querySelectorAll('.menu-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
+  // Highlight selected menu item
+  const menuItems = document.querySelectorAll('.menu-item');
+  menuItems.forEach(item => item.classList.remove('active'));
   element.classList.add('active');
 
-  // Update Display Panel Content
+  // Display active content panel
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(tab => tab.classList.remove('active'));
-  
-  const selectedTab = document.getElementById(tabId);
-  if (selectedTab) {
-    selectedTab.classList.add('active');
+
+  const target = document.getElementById(tabId);
+  if (target) {
+    target.classList.add('active');
   }
 }
